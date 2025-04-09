@@ -19,8 +19,11 @@ export const login = createAsyncThunk('auth/login', async (userInput: LoginInput
   try {
     const response = await loginUser(userInput.loginId, userInput.password); // Correct function call to pass both loginId and password
     return response;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.message);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+    return thunkAPI.rejectWithValue("An unknown error occurred");
   }
 });
 
