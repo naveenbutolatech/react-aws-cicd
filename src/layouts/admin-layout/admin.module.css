@@ -1,0 +1,17 @@
+.container {
+    width:'100%';
+    height:150px;
+  }
+  
+  .header {
+    grid-column: 1 / -1;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .sidebar {
+    padding: 1rem;
+    background: #fff;
+    border-right: 1px solid #dee2e6;
+  }

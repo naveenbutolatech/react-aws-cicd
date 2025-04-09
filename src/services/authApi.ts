@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { jwtDecode } from "jwt-decode"; // Import as default
 
 const api = axios.create({
   baseURL: 'http://localhost:3000',
@@ -7,8 +8,13 @@ const api = axios.create({
   }
 });
 
+interface DecodedToken {
+  role: string;
+}
+
 export interface LoginResponse {
   access_token: string;
+  role: string;
 }
 
 export const loginUser = async (
@@ -21,7 +27,13 @@ export const loginUser = async (
       password
     });
     console.log('API response data:', response.data);
-    return { access_token: response.data.access_token };
+    const { access_token } = response.data;
+    const decoded: DecodedToken = jwtDecode(access_token);  // Use default import
+
+    return { 
+      access_token,
+      role: decoded.role
+    };
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(

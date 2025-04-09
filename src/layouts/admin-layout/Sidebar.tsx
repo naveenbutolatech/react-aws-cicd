@@ -1,5 +1,5 @@
 
-import styles from './dashboard.module.css';
+import styles from './admin.module.css';
 
 export default function Sidebar() {
   return (

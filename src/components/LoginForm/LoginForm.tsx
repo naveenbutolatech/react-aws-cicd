@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import useAuthRedirect from '../../hooks/useAuthRedirect';
 import { useAppDispatch, useAppSelector } from '../../store/store';
 import { login } from '../../store/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import styles from './LoginForm.module.css';
 
 interface Errors {
@@ -14,10 +15,18 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<Errors>({});
   const dispatch = useAppDispatch();
-  const { isLoading: isSubmitting, error: apiError } = useAppSelector((state) => state.auth);
-  const token = useAppSelector((state) => state.auth.token);
-  useAuthRedirect();
-  console.log('useAuthRedirect invoked with token:', token);
+  const { isLoading: isSubmitting, error: apiError, role } = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (role) {
+      if (role === 'admin') {
+        navigate('/admin-dashboard');
+      } else if (role === 'doctor') {
+        navigate('/doctor-dashboard');
+      }
+    }
+  }, [role, navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

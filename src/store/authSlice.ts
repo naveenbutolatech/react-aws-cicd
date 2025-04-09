@@ -5,12 +5,14 @@ import { loginUser } from '../services/authApi'; // Ensure loginUser import
 
 interface AuthState {
   token: string | null;
+  role: string | null;
   isLoading: boolean;
   error: string | null;
 }
 
 const initialState: AuthState = {
   token: localStorage.getItem('token'),
+  role: null,
   isLoading: false,
   error: null
 };
@@ -36,9 +38,10 @@ const authSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action: PayloadAction<{ access_token: string }>) => {
+    builder.addCase(login.fulfilled, (state, action: PayloadAction<{ access_token: string; role: string }>) => {
       state.isLoading = false;
-      const { access_token } = action.payload;
+      const { access_token, role } = action.payload;
+      state.role = role; // Store the user's role in state
       state.token = access_token;
       console.log('Token received and stored:', access_token);
       localStorage.setItem('token', access_token);
