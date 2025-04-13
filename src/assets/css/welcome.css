@@ -1,0 +1,175 @@
+/* Splash Screen Container */
+.splash-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #f8f9fa;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Content Wrapper */
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  transition: opacity 0.5s ease-out;
+}
+
+/* Fade out animation */
+.fade-out {
+  opacity: 0;
+}
+
+/* Logo Styling */
+.logo-container {
+  margin-bottom: 2rem;
+  animation: pop-in 1s ease forwards;
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.welcome-logo {
+  width: 120px;
+  height: 120px;
+  background-color: #4a90e2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+/* App Title Styling */
+.app-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slide-up 0.8s 0.3s ease forwards;
+}
+
+/* Tagline Styling */
+.tagline {
+  color: #666;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  opacity: 0;
+  animation: slide-up 0.8s 0.6s ease forwards;
+}
+
+/* Loading Bar */
+.loading-bar {
+  width: 300px;
+  height: 6px;
+  background-color: #e6e6e6;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-progress {
+  position: absolute;
+  height: 100%;
+  width: 0;
+  background-color: #4a90e2;
+  border-radius: 3px;
+  animation: loading 3s ease forwards;
+}
+
+/* Animations */
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  20% {
+    width: 20%;
+  }
+  50% {
+    width: 55%;
+  }
+  70% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .logo {
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+  }
+  
+  .app-title {
+    font-size: 1.7rem;
+  }
+  
+  .loading-bar {
+    width: 250px;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 80px;
+    height: 80px;
+    font-size: 1.8rem;
+  }
+  
+  .app-title {
+    font-size: 1.4rem;
+  }
+  
+  .loading-bar {
+    width: 200px;
+  }
+}
+

@@ -33,8 +33,8 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout(state) {
-      state.token = null;
+    logout() {
+      return { ...initialState }; // Reset the entire state to its initial values
     }
   },
   extraReducers: (builder) => {
