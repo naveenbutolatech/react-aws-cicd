@@ -4,13 +4,21 @@ import {
   useSelector as useReduxSelector,
   TypedUseSelectorHook
 } from 'react-redux';
+
+
 import authReducer from './authSlice';
+import hospitalReducer from './hospitalSlice';
+import hospitalRegistrationReducer from './hospitalRegistrationSlice';
+
 export const store = configureStore({
   reducer: {
-    auth: authReducer
+    auth: authReducer,
+    hospital: hospitalReducer,
+    hospitalRegistration: hospitalRegistrationReducer // Add this line
   },
-  devTools: import.meta.env.DEV
+  devTools: true
 });
+
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

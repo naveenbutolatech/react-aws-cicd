@@ -42,5 +42,4 @@ export const loginUser = async (
     }
     throw new Error('Network error. Please check your connection.');
   }
-};
-
+}
