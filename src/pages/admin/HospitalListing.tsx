@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { fetchHospitals } from "../../store/hospitalSlice";
+import { fetchHospitals, HospitalType } from "../../store/hospitalSlice";
+
 
 const HospitalListing: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,8 +26,9 @@ const HospitalListing: React.FC = () => {
       return words.slice(0, maxWords).join(" ") + "...";
     }
     return text;
-  };
+  }
   
+
   return (
     <div className="wrapper-right-dashboard">
       <div className="table-listing">
@@ -60,7 +62,7 @@ const HospitalListing: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {hospitals.map((hospital: any) => (
+            {hospitals.map((hospital: HospitalType) => (
                 <tr key={hospital.id}>
                   <td>{hospital.firstname}</td>
                   <td>{hospital.email}</td>

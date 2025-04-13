@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getHospitalList } from '../services/hospitalService';
 
-interface HospitalType {
+export interface HospitalType {
   id: string;
-  name: string;
+  firstname: string;
+  email: string;
   address: string;
-  contact: string;
+  phonenumber: string;
 }
 
 interface HospitalState {

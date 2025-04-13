@@ -1,8 +1,4 @@
-interface HeaderProps {
-  onLogout: () => void;
-}
-
- export default function Header({ }: HeaderProps) {
+ export default function Header() {
   return (
     <></>
   );

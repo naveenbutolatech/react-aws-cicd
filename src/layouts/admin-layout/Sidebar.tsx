@@ -3,12 +3,15 @@ import handleLogout from '../../utils/authHelpers';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+// Define all possible menu names as a type
+type MenuName = 'create' | 'todo' | null;
+
 export default function Sidebar() {
   const [isSidebarClosed, setIsSidebarClosed] = useState(false);
-  const [openSubMenu, setOpenSubMenu] = useState(null);
+  const [openSubMenu, setOpenSubMenu] = useState<MenuName>(null);
 
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const toggleSidebar = () => {
     setIsSidebarClosed(!isSidebarClosed);
@@ -17,7 +20,7 @@ export default function Sidebar() {
     }
   };
 
-  const toggleSubMenu = (menuName:any) => {
+  const toggleSubMenu = (menuName: MenuName) => {
     if (openSubMenu === menuName) {
       setOpenSubMenu(null);
     } else {
