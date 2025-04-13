@@ -26,6 +26,7 @@ const HospitalListing: React.FC = () => {
     }
     return text;
   };
+  
   return (
     <div className="wrapper-right-dashboard">
       <div className="table-listing">
